@@ -1,43 +1,4 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -86,8 +47,8 @@
         .news-item {
             margin-bottom: 15px;
         }
-        .lichess-frame {
-            width: 100%;
+        #lichess-board {
+            width: 600px;
             height: 600px;
         }
         * {
@@ -98,7 +59,7 @@
 <body>
     <div class="profile">
         <h1>VENKATESAN GOVINDARAJAN</h1>
-        <p>DevSecOps Engineer | Terminal Tinkerer</p>
+        <p>DevSecOps Engineer</p>
         <div class="skills">
             <h2>SKILLS</h2>
             <span>AWS</span><span>Scripting</span><span>Node.js</span><span>PostgreSQL</span><span>Baremetal Servers</span>
@@ -128,14 +89,16 @@
         <div id="hackerRankNews"></div>
 
         <h2>CHESS PUZZLE</h2>
-        <p>Crack a Lichess puzzle!</p>
-        <iframe class="lichess-frame" src="https://lichess.org/training/frame?theme=wood4&bg=light" allowtransparency="true" frameborder="0"></iframe>
+        <p>Play a Lichess puzzle!</p>
+        <div id="lichess-board"></div>
 
-        <h2>VISITOR COUNT (BINARY)</h2>
+        <h2>VISITOR COUNT</h2>
         <p id="visitorCount"></p>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chessboardjs@0.3.0/dist/chessboard-0.3.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.2/chess.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

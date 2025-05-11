@@ -44,44 +44,48 @@ function loadRandomPage() {
     document.getElementById('randomPage').src = randomPages[randomIndex];
 }
 
+function toTamilNumeral(num) {
+    const tamilDigits = ['௦', '௧', '௨', '௩', '௪', '௫', '௬', '௭', '௮', '௯'];
+    return num.toString().split('').map(digit => tamilDigits[parseInt(digit)]).join('');
+}
+
 function updateVisitorCount() {
     let count = localStorage.getItem('visitorCount') || 0;
     count = parseInt(count) + 1;
     localStorage.setItem('visitorCount', count);
-    const binaryCount = count.toString(2);
-    document.getElementById('visitorCount').textContent = `Visitors: ${count} (Binary: ${binaryCount})`;
+    document.getElementById('visitorCount').textContent = `Visitors: ${toTamilNumeral(count)}`;
 }
 
-const linuxCommits = [
-    { hash: '1a2b3c4', message: 'Fix memory leak in kernel module', date: '2025-05-10' },
-    { hash: '5d6e7f8', message: 'Update scheduler for better performance', date: '2025-05-09' },
-    { hash: '9g0h1i2', message: 'Add support for new hardware', date: '2025-05-08' },
-    { hash: '3j4k5l6', message: 'Security patch for network stack', date: '2025-05-07' },
-    { hash: '7m8n9o0', message: 'Optimize filesystem performance', date: '2025-05-06' }
-];
+async function fetchLinuxCommits() {
+    try {
+        const response = await fetch('https://api.github.com/repos/torvalds/linux/commits?per_page=5');
+        const commits = await response.json();
+        const linuxList = document.getElementById('linuxCommits');
+        linuxList.innerHTML = '';
+        commits.forEach(commit => {
+            const li = document.createElement('li');
+            li.textContent = `[${commit.sha.slice(0,7)}] ${commit.commit.message.split('\n')[0]} (${new Date(commit.commit.author.date).toISOString().split('T')[0]})`;
+            linuxList.appendChild(li);
+        });
+    } catch (error) {
+        console.error('Error fetching Linux commits:', error);
+    }
+}
 
-const postgresCommits = [
-    { hash: 'p1q2r3s4', message: 'Improve query planner performance', date: '2025-05-09' },
-    { hash: 't5u6v7w8', message: 'Fix index corruption bug', date: '2025-05-08' },
-    { hash: 'x9y0z1a2', message: 'Add new JSONB functions', date: '2025-05-07' },
-    { hash: 'b3c4d5e6', message: 'Optimize WAL handling', date: '2025-05-06' },
-    { hash: 'f7g8h9i0', message: 'Security fix for authentication', date: '2025-05-05' }
-];
-
-function displayCommits() {
-    const linuxList = document.getElementById('linuxCommits');
-    linuxCommits.forEach(commit => {
-        const li = document.createElement('li');
-        li.textContent = `[${commit.hash}] ${commit.message} (${commit.date})`;
-        linuxList.appendChild(li);
-    });
-
-    const postgresList = document.getElementById('postgresCommits');
-    postgresCommits.forEach(commit => {
-        const li = document.createElement('li');
-        li.textContent = `[${commit.hash}] ${commit.message} (${commit.date})`;
-        postgresList.appendChild(li);
-    });
+async function fetchPostgresCommits() {
+    try {
+        const response = await fetch('https://api.github.com/repos/postgres/postgres/commits?per_page=5');
+        const commits = await response.json();
+        const postgresList = document.getElementById('postgresCommits');
+        postgresList.innerHTML = '';
+        commits.forEach(commit => {
+            const li = document.createElement('li');
+            li.textContent = `[${commit.sha.slice(0,7)}] ${commit.commit.message.split('\n')[0]} (${new Date(commit.commit.author.date).toISOString().split('T')[0]})`;
+            postgresList.appendChild(li);
+        });
+    } catch (error) {
+        console.error('Error fetching PostgreSQL commits:', error);
+    }
 }
 
 const hackerRankNews = [
@@ -109,9 +113,33 @@ function displayHackerRankNews() {
     });
 }
 
+function initChessPuzzle() {
+    const board = ChessBoard('lichess-board', {
+        position: 'start',
+        draggable: true,
+        dropOffBoard: 'snapback'
+    });
+    const chess = new Chess();
+    
+    async function loadPuzzle() {
+        try {
+            const response = await fetch('https://lichess.org/api/puzzle/daily');
+            const puzzle = await response.json();
+            chess.load_pgn(puzzle.game.pgn);
+            board.position(chess.fen());
+        } catch (error) {
+            console.error('Error loading Lichess puzzle:', error);
+        }
+    }
+    
+    loadPuzzle();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     loadRandomPage();
     updateVisitorCount();
-    displayCommits();
+    fetchLinuxCommits();
+    fetchPostgresCommits();
     displayHackerRankNews();
+    initChessPuzzle();
 });
