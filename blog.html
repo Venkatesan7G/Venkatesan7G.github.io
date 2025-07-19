@@ -4,9 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blogs !! | VENKATESAN G</title>
-    <style>
-        h1{font-size:16px;margin:0}span{font-size:12px}.center{max-width:650px;margin:70px auto 0}.center p{font-size:14px}a{font-size:14px;text-decoration:none;color:#00E}.city-time{font-size:12px;color:#666;margin-top:30px;text-align:center}footer{position:fixed;bottom:0;left:0;width:100%;background:white;padding:10px 0;text-align:center;border-top:1px solid #eee}.blog-item{margin-bottom:25px}.blog-date{font-size:10px;color:#999;margin-bottom:5px}.blog-title{font-weight:bold;margin-bottom:8px}.blog-desc{font-size:13px;line-height:1.4;margin-bottom:5px}.blog-platform{font-size:11px;color:#666}@media (max-width:580px){.center{padding:0 16px;margin-top:40px}}
-    </style>
+<style>
+    h1 {font-size: 16px; margin: 0}
+    span {font-size: 12px}
+    .center {max-width: 650px; margin: 70px auto 0; padding-bottom: 50px} /* Add padding-bottom */
+    .center p {font-size: 14px}
+    a {font-size: 14px; text-decoration: none; color: #00E}
+    .city-time {font-size: 12px; color: #666; margin-top: 30px; text-align: center}
+    footer {position: fixed; bottom: 0; left: 0; width: 100%; background: white; padding: 10px 0; text-align: center; border-top: 1px solid #eee}
+    .blog-item {margin-bottom: 25px}
+    .blog-date {font-size: 10px; color: #999; margin-bottom: 5px}
+    .blog-title {font-weight: bold; margin-bottom: 8px}
+    .blog-desc {font-size: 13px; line-height: 1.4; margin-bottom: 5px}
+    .blog-platform {font-size: 11px; color: #666}
+    @media (max-width: 580px) {
+        .center {padding: 0 16px; margin-top: 40px; padding-bottom: 50px} /* Ensure padding-bottom in mobile view */
+    }
+</style>
 </head>
 <body>
 <div class="center">
@@ -85,51 +99,39 @@
     </footer>
 
     <script>
-        async function updateCityTime() {
-            try {
-                // Simple approach - use predefined cities with timezone API
-                const cities = [
-                    { name: 'New York', timezone: 'America/New_York' },
-                    { name: 'London', timezone: 'Europe/London' },
-                    { name: 'Tokyo', timezone: 'Asia/Tokyo' },
-                    { name: 'Berlin', timezone: 'Europe/Berlin' },
-                    { name: 'Mumbai', timezone: 'Asia/Kolkata' }
-                ];
-                const randomCity = cities[Math.floor(Math.random() * cities.length)];
-                
-                const response = await fetch(`https://worldtimeapi.org/api/timezone/${randomCity.timezone}`);
-                const data = await response.json();
+    function updateCityTime() {
+        const cities = [
+            { name: 'New York', timezone: 'America/New_York' },
+            { name: 'London', timezone: 'Europe/London' },
+            { name: 'Tokyo', timezone: 'Asia/Tokyo' },
+            { name: 'Berlin', timezone: 'Europe/Berlin' },
+            { name: 'Mumbai', timezone: 'Asia/Kolkata' }
+        ];
+        const randomCity = cities[Math.floor(Math.random() * cities.length)];
+        
+        fetch(`https://worldtimeapi.org/api/timezone/${randomCity.timezone}`)
+            .then(response => response.json())
+            .then(data => {
                 const cityTime = new Date(data.datetime);
                 const timeString = cityTime.toLocaleTimeString('en-US', { 
                     hour12: false, 
                     hour: '2-digit', 
                     minute: '2-digit' 
                 });
-                
-                const cityTimeElement = document.getElementById('cityTime');
-                if (cityTimeElement) {
-                    cityTimeElement.textContent = `${randomCity.name}: ${timeString}`;
-                }
-            } catch (error) {
-                // Show a simple fallback
-                const cities = ['New York', 'London', 'Tokyo', 'Berlin', 'Mumbai'];
-                const randomCity = cities[Math.floor(Math.random() * cities.length)];
-                const now = new Date();
-                const timeString = now.toLocaleTimeString('en-US', { 
+                document.getElementById('cityTime').textContent = `${randomCity.name}: ${timeString}`;
+            })
+            .catch(() => {
+                const timeString = new Date().toLocaleTimeString('en-US', { 
                     hour12: false, 
                     hour: '2-digit', 
                     minute: '2-digit' 
                 });
-                
-                const cityTimeElement = document.getElementById('cityTime');
-                if (cityTimeElement) {
-                    cityTimeElement.textContent = `${randomCity}: ${timeString}`;
-                }
-            }
-        }
+                document.getElementById('cityTime').textContent = `${randomCity.name}: ${timeString} (local)`;
+            });
+    }
 
-        updateCityTime();
-        setInterval(updateCityTime, 300000);
-    </script>
+    updateCityTime();
+    setInterval(updateCityTime, 300000);
+</script>
 </body>
 </html> 
