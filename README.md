@@ -1,4 +1,4 @@
-# Performance Optimized
+# Performance Optimized - With AI
 
 Minimalist portfolio built for speed. Pure HTML/CSS/JS, no frameworks, no bloat.
 
