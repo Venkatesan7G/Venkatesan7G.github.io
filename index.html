@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Venkatesan Govindarajan — Engineer</title>
+  <meta name="description" content="DevOps engineer and MSc student in Communications & Signal Processing at TU Ilmenau. Based in Germany." />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">venkatesan<span>.</span>g</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="cv.html">CV</a></li>
+    </ul>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">● dark</button>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+
+    <section class="hero" style="border-bottom:none; padding-bottom: 3rem;">
+      <div class="hero-label">Engineer · Ilmenau, Germany</div>
+      <h1>
+        <strong>MS Communications & Signal Processing</strong><br>
+        DevOps &amp; Cloud Engineer
+      </h1>
+      <!-- FIX: added max-width:100% and removed any width constraint so bio spans full column -->
+      <p class="hero-desc" style="max-width:100%; width:100%;">
+        I'm an engineer who builds things that have to work reliably and increasingly things that have to think.
+        My background is in DevOps and platform infrastructure: 3+ years managing Linux-based systems, Kubernetes deployments,
+        and CI/CD pipelines for high-volume production environments.
+        I'm now finishing an MSc in Communications and Signals Processing at TU Ilmenau, focused on areas where data,
+        networks, and intelligent systems intersect: IIoT, AI/ML-driven signal processing, and network optimization.
+        I'm looking for roles where I can apply both sides of that experience — whether that's building reliable infrastructure
+        for signal-heavy systems, working on ML pipelines close to the hardware, or contributing to research-adjacent engineering
+        in industrial or communications contexts.
+      </p>
+      <div class="hero-meta">
+        <span>TU Ilmenau, MSc CSP</span>
+        <span>3 yrs DevOps / Cloud</span>
+        <span>Python · AWS · Linux</span>
+        <span>Available for Werkstudent &amp; full-time</span>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-label">What I do</div>
+      <!-- FIX: removed the orphan unclosed <div class="skill-cell"> that was breaking grid layout -->
+      <div class="skills-grid">
+        <div class="skill-cell">
+          <div class="skill-cat">Signal Processing</div>
+          <div class="skill-items">BSS / ICA · Statistical Signal Processing · Numerical Simulation</div>
+        </div>
+        <div class="skill-cell">
+          <div class="skill-cat">Programming Languages</div>
+          <div class="skill-items">Python · Matlab · Bash · SQL · Go · JavaScript</div>
+        </div>
+        <div class="skill-cell">
+          <div class="skill-cat">Cloud &amp; Infra</div>
+          <div class="skill-items">AWS (EC2, EKS, RDS, Aurora) · Kubernetes · Terraform · Ansible</div>
+        </div>
+        <div class="skill-cell">
+          <div class="skill-cat">Automation &amp; CI/CD</div>
+          <div class="skill-items">Jenkins · Python · Bash · SaltStack · Cloud-Init · Fossil</div>
+        </div>
+        <div class="skill-cell">
+          <div class="skill-cat">Observability</div>
+          <div class="skill-items">Prometheus · Grafana · ELK Stack · NewRelic · PagerDuty</div>
+        </div>
+        <div class="skill-cell">
+          <div class="skill-cat">Security</div>
+          <div class="skill-items">SOC2 Type 2 · IAM · VPN (Tailscale, OpenVPN) · STIG · systemd sandboxing</div>
+        </div>
+        <div class="skill-cell">
+          <div class="skill-cat">Languages</div>
+          <div class="skill-items">English C1 · German A1</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-label">Recent work</div>
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-company">Smartlead — Sydney (Remote)</div>
+          <div class="exp-period">Feb 2024 – Jul 2025</div>
+        </div>
+        <div class="exp-role">DevOps Engineer</div>
+        <ul class="exp-points">
+          <li>Engineered AWS infrastructure for 10M+ daily email deliveries; achieved 99.99% uptime via multi-region load balancing.</li>
+          <li>Cut costs by 15% (~$500K USD) in FY2024 through AWS Savings Plans and auto-scaling optimisation.</li>
+          <li>Sole architect for SOC2 Type 2 compliance, redesigned 20+ IAM policies, migrated credentials to Secrets Manager.</li>
+          <li>Managed and automated setup of 1,500+ third-party servers using Cloud-Init with Docker, NewRelic, and firewall rules.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="tag">AWS</span><span class="tag">PostgreSQL</span><span class="tag">Kubernetes</span>
+          <span class="tag">SOC2</span><span class="tag">NewRelic</span><span class="tag">DeepSeek</span>
+        </div>
+      </div>
+      <p style="margin-top:1.5rem;">
+        <a href="work.html" style="font-family:var(--mono);font-size:0.82rem;color:var(--signal);text-decoration:none;">
+          Full work history →
+        </a>
+      </p>
+    </section>
+
+    <section>
+      <div class="section-label">Latest from the blog</div>
+      <div class="blog-list">
+        <a href="blog/bss-speech-signals.html" class="blog-item">
+          <div class="blog-date">Feb 2025</div>
+          <div>
+            <div class="blog-cat">Signal Processing</div>
+            <div class="blog-title">Blind Source Separation for mixed speech — what I built and what I learned</div>
+            <div class="blog-excerpt">Walking through the ICA-based BSS model I built for my MSc, the maths behind it, and why it's harder than it looks.</div>
+          </div>
+        </a>
+      </div>
+      <p style="margin-top:1.5rem;">
+        <a href="blog.html" style="font-family:var(--mono);font-size:0.82rem;color:var(--signal);text-decoration:none;">
+          All posts →
+        </a>
+      </p>
+    </section>
+
+    <section style="padding-bottom:0;border-bottom:none;">
+      <div class="section-label">Contact</div>
+      <p style="font-size:1rem;color:var(--ink-2);max-width:520px;line-height:1.7;">
+        I'm currently looking for Werkstudent roles and full-time positions starting late 2025.
+        Best reached by email -
+        I reply within 48 hours.
+      </p>
+      <p style="margin-top:1.25rem;">
+        <a href="mailto:venkatesangovindarajan03@gmail.com"
+           style="font-family:var(--mono);font-size:0.85rem;color:var(--signal);text-decoration:none;">
+          venkatesangovindarajan03@gmail.com →
+        </a>
+      </p>
+      <p style="margin-top:0.75rem;">
+        <a href="https://www.linkedin.com/in/venkatesan-govindarajan/" target="_blank"
+           style="font-family:var(--mono);font-size:0.82rem;color:var(--ink-3);text-decoration:none;">
+          LinkedIn ↗
+        </a>
+        &nbsp;&nbsp;
+        <a href="https://github.com/Venkatesan7G" target="_blank"
+           style="font-family:var(--mono);font-size:0.82rem;color:var(--ink-3);text-decoration:none;">
+          GitHub ↗
+        </a>
+      </p>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-name">Venkatesan Govindarajan · Ilmenau, Germany</span>
+    <div class="footer-links">
+      <a href="work.html">Work</a>
+      <a href="projects.html">Projects</a>
+      <a href="blog.html">Blog</a>
+      <a href="cv.html">CV</a>
+      <a href="mailto:venkatesangovindarajan03@gmail.com">Email</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Easter egg overlay -->
+<div id="konami-overlay">
+  <pre>
+██╗   ██╗███████╗ ██████╗ 
+██║   ██║╚════██║██╔════╝ 
+██║   ██║    ██╔╝██║  ███╗
+╚██╗ ██╔╝   ██╔╝ ██║   ██║
+ ╚████╔╝   ██║   ╚██████╔╝
+  ╚═══╝    ╚═╝    ╚═════╝ 
+  </pre>
+  <p>you found the easter egg<br><br>
+  this is basically me at 2am doing random things that<br>
+  <em>i definitely was planning five minutes ago</em><br><br>
+  current status: MSc student by day, gremlin by night<br>
+  german skill level: kann Tee bestellen ✓</p>
+  <button id="konami-close">[ esc ] close</button>
+</div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

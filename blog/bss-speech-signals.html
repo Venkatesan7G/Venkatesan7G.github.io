@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stereo BSS with Unfolded Givens Rotations — Venkatesan Govindarajan</title>
+  <meta name="description" content="Building a deep unfolding approach to blind source separation for stereo audio at TU Ilmenau." />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">venkatesan<span>.</span>g</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../work.html">Work</a></li>
+      <li><a href="../projects.html">Projects</a></li>
+      <li><a href="../blog.html">Blog</a></li>
+      <li><a href="../cv.html">CV</a></li>
+    </ul>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">● dark</button>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+
+    <div class="post-header">
+      <div class="post-meta">
+        <span class="cat">Signal Processing</span>
+        <span>February 2025</span>
+        <span>10 min read</span>
+      </div>
+      <h1>Stereo BSS via Unfolded Complex Givens Rotations — what I built and why it's harder than ICA</h1>
+    </div>
+
+    <div class="post-body">
+
+      <p>
+        For my MSc research at TU Ilmenau, I built a stereo Blind Source Separation system
+        that goes significantly beyond classical ICA. The goal: given a two-microphone recording
+        of two simultaneous speakers, recover each speaker separately — without knowing anything
+        about the room, the microphone positions, or the speakers themselves.
+      </p>
+
+      <p>
+        This post covers the actual approach I took (unfolded complex Givens rotations),
+        the problem that nearly derailed the whole thing (output collapse), and what
+        the numbers actually mean.
+      </p>
+
+      <h2>Why not just use ICA?</h2>
+
+      <p>
+        Independent Component Analysis is the textbook answer to BSS. It works by assuming
+        source signals are statistically independent and finding a demixing matrix that
+        maximises that independence. Simple, elegant, and works well for synthetic signals.
+      </p>
+
+      <p>
+        The problem with real speech: consecutive audio frames are temporally correlated,
+        which violates ICA's independence assumption. You also lose all spatial information
+        — ICA doesn't care that the mixture came from two microphones at specific positions
+        in a real room with real reverberation. And it's not learnable: ICA has no trainable
+        parameters, so you can't improve it with data.
+      </p>
+
+      <p>
+        The approach I implemented instead: <strong>deep unfolding of complex-valued Givens
+        rotations</strong>, with a discriminative loss to prevent collapse.
+      </p>
+
+      <h2>Givens rotations in the STFT domain</h2>
+
+      <p>
+        The core idea is to work in the Short-Time Fourier Transform domain, where the
+        stereo mixture becomes a complex-valued spectrogram X ∈ ℂ^(2×F×T).
+        At each frequency bin f, we apply a rotation:
+      </p>
+
+<pre><code>y₁(f,t) = cos(θ_f) · x₁(f,t) + exp(jφ_f) · sin(θ_f) · x₂(f,t)
+y₂(f,t) = -exp(-jφ_f) · sin(θ_f) · x₁(f,t) + cos(θ_f) · x₂(f,t)</code></pre>
+
+      <p>
+        The angle θ_f controls how much each microphone contributes at that frequency.
+        The phase φ_f handles the inter-channel phase difference — which encodes spatial
+        information about where the speaker is relative to the microphones.
+        This is a unitary transformation, so it preserves signal energy.
+      </p>
+
+      <p>
+        The "deep unfolding" part: instead of solving this analytically (which doesn't work
+        for reverberant conditions), we unroll K iterations of a gradient update into a
+        feedforward network with learnable step sizes per iteration. The network learns
+        when to update aggressively and when to be conservative at each frequency.
+      </p>
+
+      <h2>The collapse problem</h2>
+
+      <p>
+        The first version of training converged perfectly — and produced completely useless
+        outputs. Both output channels were nearly identical, each a near-copy of the mixture.
+        This is called <strong>output collapse</strong>, and it's surprisingly hard to avoid.
+      </p>
+
+      <p>
+        The model found a trivial solution: y₁ = y₂ ≈ mixture / 2. This minimises
+        reconstruction loss, since both sources are present in the mixture — but it's
+        useless for separation. The standard Permutation Invariant Training (PIT) loss
+        doesn't prevent this.
+      </p>
+
+      <p>
+        The fix was a custom discriminative loss term:
+      </p>
+
+<pre><code># Penalise positive correlation between output magnitudes
+L_discrim = ReLU( sum(|y₁| * |y₂|) / power )
+
+L_total = L_PIT + α * L_discrim  # α = 0.05 worked well</code></pre>
+
+      <p>
+        The weight α is critical. Too low and collapse happens anyway. Too high and
+        the model learns to make outputs maximally different regardless of content quality —
+        which produces clean separation of total garbage. Getting this right took
+        most of the iteration time.
+      </p>
+
+      <h2>Data pipeline</h2>
+
+      <p>
+        I used LibriSpeech (800 utterances, 50+ speakers) mixed with room impulse responses
+        generated via pyroomacoustics. Each training sample is a 4.5-second stereo mixture
+        at a random SNR (-5 to +8 dB) in a simulated room with RT60 between 0.1 and 0.6
+        seconds — covering everything from a dry studio to a reverberant office.
+      </p>
+
+      <p>
+        Seven augmentation strategies were applied online during training: channel swap,
+        time shift, per-channel phase rotation, magnitude scaling, frequency masking,
+        time masking, and low-level additive noise. Without these, the model memorised
+        the training rooms and generalised poorly.
+      </p>
+
+      <h2>Results</h2>
+
+      <p>
+        On the test set (held-out rooms and speakers):
+      </p>
+
+      <ul>
+        <li><strong>SIR 7–9 dB</strong> — Source-to-Interference Ratio (the main metric: how much of the other speaker leaks through)</li>
+        <li><strong>SDR 5–7 dB</strong> — Source-to-Distortion Ratio (overall quality)</li>
+        <li><strong>SAR 12–15 dB</strong> — Source-to-Artifacts Ratio (low artificial noise introduced)</li>
+        <li><strong>~0.15s</strong> per 4.5-second mixture on GPU</li>
+      </ul>
+
+      <p>
+        These are reasonable for a two-channel system on reverberant data without oracle
+        masks or speaker enrollment. The SAR being relatively high means the separation
+        is clean when it works — the main failure mode is interference leakage in
+        highly reverberant conditions (RT60 &gt; 0.5s), not artifact generation.
+      </p>
+
+      <h2>What I'd do next</h2>
+
+      <p>
+        The model currently processes each mixture independently. The obvious extension is
+        speaker tracking across utterances — if you've seen speaker A once, use that
+        information to separate subsequent mixtures faster. There are also architectures
+        (like SepFormer or DPRNN) that work on the time domain directly and would be
+        worth comparing against on the same dataset.
+      </p>
+
+      <p>
+        Code is on GitHub if you want to reproduce it —
+        <a href="https://github.com/Venkatesan7G/Blind-Source-Seperation/tree/bss_03"
+           style="color:var(--signal);">branch bss_03</a>.
+        The README has the full pipeline including dataset generation.
+      </p>
+
+      <hr style="border:none;border-top:1px solid var(--rule);margin:2.5rem 0;" />
+
+      <p>
+        <a href="../blog.html" style="font-family:var(--mono);font-size:0.82rem;color:var(--signal);text-decoration:none;">
+          ← All posts
+        </a>
+      </p>
+
+    </div>
+  </div>
+</main>
+
+<!-- Easter egg overlay -->
+<div id="konami-overlay">
+  <pre>
+██╗   ██╗███████╗ ██████╗ 
+██║   ██║╚════██║██╔════╝ 
+██║   ██║    ██╔╝██║  ███╗
+╚██╗ ██╔╝   ██╔╝ ██║   ██║
+ ╚████╔╝   ██║   ╚██████╔╝
+  ╚═══╝    ╚═╝    ╚═════╝ 
+  </pre>
+  <p>you found the easter egg<br><br>
+  this is basically me at 2am doing random things that<br>
+  <em>i definitely was planning five minutes ago</em><br><br>
+  current status: MSc student by day, gremlin by night<br>
+  german skill level: kann Tee bestellen ✓</p>
+  <button id="konami-close">[ esc ] close</button>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-name">Venkatesan Govindarajan · Ilmenau, Germany</span>
+    <div class="footer-links">
+      <a href="../work.html">Work</a>
+      <a href="../projects.html">Projects</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../cv.html">CV</a>
+      <a href="mailto:venkatesangovindarajan03@gmail.com">Email</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

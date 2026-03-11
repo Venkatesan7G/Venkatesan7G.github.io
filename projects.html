@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Venkatesan Govindarajan</title>
+  <meta name="description" content="Technical projects in DevOps, signal processing, and systems engineering." />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">venkatesan<span>.</span>g</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="cv.html">CV</a></li>
+    </ul>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">● dark</button>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+
+    <section class="hero" style="padding-bottom:2.5rem;">
+      <div class="hero-label">Projects</div>
+      <h1><strong>Technical Work</strong></h1>
+      <p class="hero-desc">
+        Selected projects from academic research, professional roles, and systems work.
+      </p>
+    </section>
+
+    <section>
+      <div class="section-label">Signal Processing &amp; Research</div>
+      <div class="projects-grid">
+
+        <div class="project-card" style="grid-column: 1 / -1;">
+          <div class="project-type">MSc Research · TU Ilmenau</div>
+          <h3>Stereo BSS via Unfolded Complex Givens Rotations</h3>
+          <p>
+            Novel approach to Blind Source Separation for stereo audio mixtures using
+            <strong>deep unfolding of complex-valued Givens rotations</strong> with discriminative
+            training. Separates two concurrent speakers from a two-microphone recording without
+            prior knowledge of the mixing process or speaker characteristics.
+          </p>
+          <p style="margin-top:0.6rem;">
+            Unlike classical ICA, the model learns frequency-dependent rotation angles (θ, φ)
+            through K unfolded iterations in the complex STFT domain. A key challenge was
+            output collapse — where both output channels converge to the mixture mean.
+            Solved with a custom discriminative loss that penalises inter-output correlation.
+            Room acoustics simulated with pyroomacoustics (RT60: 0.1–0.6s); training data
+            from LibriSpeech with 7 augmentation strategies including channel swap, time
+            masking, and additive noise.
+          </p>
+          <div style="margin: 1rem 0; padding: 1rem; background: var(--bg-warm); border: 1px solid var(--rule); font-family: var(--mono); font-size: 0.78rem; color: var(--ink-2); line-height: 1.8;">
+            SIR: 7–9 dB &nbsp;·&nbsp; SDR: 5–7 dB &nbsp;·&nbsp; SAR: 12–15 dB &nbsp;·&nbsp; ~0.15s per 4.5s mixture (GPU)
+          </div>
+          <div class="exp-tags" style="margin-top:0;">
+            <span class="tag">Python</span>
+            <span class="tag">PyTorch</span>
+            <span class="tag">Complex Givens Rotations</span>
+            <span class="tag">STFT</span>
+            <span class="tag">pyroomacoustics</span>
+            <span class="tag">LibriSpeech</span>
+            <span class="tag">mir_eval</span>
+            <span class="tag">Deep Unfolding</span>
+          </div>
+          <a href="https://github.com/Venkatesan7G/Blind-Source-Seperation/tree/bss_03"
+             class="project-link" target="_blank" style="margin-top:0.75rem;">
+            GitHub — branch: bss_03 ↗
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="section-label">Infrastructure &amp; Cloud</div>
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <div class="project-type">Smartlead · Internal</div>
+          <h3>DeepSeek on EC2 — Self-hosted LLM for Classification</h3>
+          <p>
+            Deployed and customised DeepSeek on AWS EC2 for email content classification
+            within Smartlead's deliverability pipeline. Tuned for keyword-focused inference
+            rather than general generation to reduce compute cost at high send volumes.
+          </p>
+          <p style="margin-top:0.5rem; font-size:0.8rem; color: var(--ink-3); font-style:italic;">
+            Production rollout and final metrics were in progress at end of contract.
+          </p>
+          <div class="exp-tags" style="margin-top:0.75rem;">
+            <span class="tag">DeepSeek</span><span class="tag">AWS EC2</span>
+            <span class="tag">Python</span><span class="tag">LLM deployment</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-type">Smartlead</div>
+          <h3>PostgreSQL Data Archival Pipeline</h3>
+          <p>
+            Designed and executed archival of 18 months of data from AWS RDS to EC2 Citus
+            clusters. Reduced monthly RDS Reader costs by 20% and improved query performance
+            by 30% through partitioning and indexing strategies.
+          </p>
+          <div class="exp-tags" style="margin-top:0.75rem;">
+            <span class="tag">PostgreSQL</span><span class="tag">Citus</span>
+            <span class="tag">AWS RDS</span><span class="tag">Boto3</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-type">AuditCue</div>
+          <h3>SQLite Real-Time Backup with Litestream</h3>
+          <p>
+            Continuous replication service for SQLite databases to AWS S3, built for a
+            SOC2/ISO 27001 product. Achieved 99.9% data recovery reliability with
+            near-real-time backup cadence.
+          </p>
+          <div class="exp-tags" style="margin-top:0.75rem;">
+            <span class="tag">Litestream</span><span class="tag">SQLite</span>
+            <span class="tag">AWS S3</span><span class="tag">Bash</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-type">Comcast</div>
+          <h3>EC2 x86 → ARM Architecture Migration</h3>
+          <p>
+            Led migration of a critical production application from x86 to ARM.
+            Delivered 25% cost reduction and 15% performance improvement with no
+            user-facing downtime, serving a system at 1.5M+ user scale.
+          </p>
+          <div class="exp-tags" style="margin-top:0.75rem;">
+            <span class="tag">AWS EC2</span><span class="tag">ARM</span>
+            <span class="tag">Bash</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-type">Comcast</div>
+          <h3>API Proxy Bottleneck — Grafana Resolution</h3>
+          <p>
+            Built dashboards and automated alerts that surfaced a 5-month-old API proxy
+            bottleneck affecting 1.5M+ Mesh WiFi users. Resolution reduced
+            peak-traffic latency by 40%.
+          </p>
+          <div class="exp-tags" style="margin-top:0.75rem;">
+            <span class="tag">Grafana</span><span class="tag">Prometheus</span>
+            <span class="tag">Apigee</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<!-- Easter egg overlay -->
+<div id="konami-overlay">
+  <pre>
+██╗   ██╗███████╗ ██████╗ 
+██║   ██║╚════██║██╔════╝ 
+██║   ██║    ██╔╝██║  ███╗
+╚██╗ ██╔╝   ██╔╝ ██║   ██║
+ ╚████╔╝   ██║   ╚██████╔╝
+  ╚═══╝    ╚═╝    ╚═════╝ 
+  </pre>
+  <p>you found the easter egg<br><br>
+  this is basically me at 2am doing random things that<br>
+  <em>i definitely was planning five minutes ago</em><br><br>
+  current status: MSc student by day, gremlin by night<br>
+  german skill level: kann Tee bestellen ✓</p>
+  <button id="konami-close">[ esc ] close</button>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-name">Venkatesan Govindarajan · Ilmenau, Germany</span>
+    <div class="footer-links">
+      <a href="work.html">Work</a>
+      <a href="projects.html">Projects</a>
+      <a href="blog.html">Blog</a>
+      <a href="cv.html">CV</a>
+      <a href="mailto:venkatesangovindarajan03@gmail.com">Email</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

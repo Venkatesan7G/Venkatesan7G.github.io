@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Venkatesan Govindarajan</title>
+  <meta name="description" content="Writing on signal processing, DevOps, tools, and life as an engineer in Germany." />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">venkatesan<span>.</span>g</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="cv.html">CV</a></li>
+    </ul>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">● dark</button>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+
+    <section class="hero" style="padding-bottom:2.5rem;">
+      <div class="hero-label">Blog</div>
+      <h1><strong>Writing</strong></h1>
+      <p class="hero-desc">
+        Notes on signal processing, infrastructure, tools I find interesting, and
+        navigating engineering work in Germany.
+      </p>
+    </section>
+
+    <section style="border-bottom:none; padding-bottom:0;">
+      <div class="section-label">All Posts</div>
+      <div class="blog-list">
+
+        <a href="blog/bss-speech-signals.html" class="blog-item">
+          <div class="blog-date">Feb 2025</div>
+          <div>
+            <div class="blog-cat">Signal Processing</div>
+            <div class="blog-title">Blind Source Separation for mixed speech — what I built and what I learned</div>
+            <div class="blog-excerpt">Walking through the ICA-based BSS model I built for my MSc, the maths behind it, and why it's harder than it looks.</div>
+          </div>
+        </a>
+
+        <a href="blog/deepseek-aws.html" class="blog-item">
+          <div class="blog-date">Jan 2025</div>
+          <div>
+            <div class="blog-cat">DevOps / Infra</div>
+            <div class="blog-title">Running DeepSeek on EC2 — tuning a self-hosted LLM for Internal use</div>
+            <div class="blog-excerpt">How I deployed and customised DeepSeek on AWS EC2 to improve email deliverability at scale, and the gotchas.</div>
+          </div>
+        </a>
+
+        <a href="blog/soc2-solo.html" class="blog-item">
+          <div class="blog-date">Nov 2024</div>
+          <div>
+            <div class="blog-cat">DevOps / Infra</div>
+            <div class="blog-title">SOC2 Type 2 as a solo engineer — what it actually involves</div>
+            <div class="blog-excerpt">I was the only engineer responsible for getting Smartlead through SOC2 Type 2. Here's the unglamorous reality of what that looked like.</div>
+          </div>
+        </a>
+
+        <a href="blog/germany-job-hunt.html" class="blog-item">
+          <div class="blog-date">Dec 2024</div>
+          <div>
+            <div class="blog-cat">Germany / Job Hunt</div>
+            <div class="blog-title">Applying to engineering roles in Germany as a non-EU student — my honest notes</div>
+            <div class="blog-excerpt">What's different, what surprised me, and what I'd tell myself from six months ago.</div>
+          </div>
+        </a>
+
+        <a href="blog/litestream-sqlite.html" class="blog-item">
+          <div class="blog-date">Oct 2023</div>
+          <div>
+            <div class="blog-cat">Tools / Setup</div>
+            <div class="blog-title">Litestream + SQLite on AWS: simpler than you think, more reliable than it sounds</div>
+            <div class="blog-excerpt">Why we chose SQLite with Litestream replication over Postgres for a compliance-sensitive product, and how it held up.</div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-name">Venkatesan Govindarajan · Ilmenau, Germany</span>
+    <div class="footer-links">
+      <a href="work.html">Work</a>
+      <a href="projects.html">Projects</a>
+      <a href="blog.html">Blog</a>
+      <a href="cv.html">CV</a>
+      <a href="mailto:venkatesangovindarajan03@gmail.com">Email</a>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Easter egg overlay -->
+<div id="konami-overlay">
+  <pre>
+██╗   ██╗███████╗ ██████╗ 
+██║   ██║╚════██║██╔════╝ 
+██║   ██║    ██╔╝██║  ███╗
+╚██╗ ██╔╝   ██╔╝ ██║   ██║
+ ╚████╔╝   ██║   ╚██████╔╝
+  ╚═══╝    ╚═╝    ╚═════╝ 
+  </pre>
+  <p>you found the easter egg<br><br>
+  this is basically me at 2am doing random things that<br>
+  <em>i definitely was planning five minutes ago</em><br><br>
+  current status: MSc student by day, gremlin by night<br>
+  german skill level: kann Tee bestellen ✓</p>
+  <button id="konami-close">[ esc ] close</button>
+</div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

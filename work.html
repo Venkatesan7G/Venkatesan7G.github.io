@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Work — Venkatesan Govindarajan</title>
+  <meta name="description" content="Full work history — DevOps, infrastructure, and cloud engineering experience." />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">venkatesan<span>.</span>g</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="cv.html">CV</a></li>
+    </ul>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">● dark</button>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+
+    <section class="hero" style="padding-bottom:2.5rem;">
+      <div class="hero-label">Experience</div>
+      <h1><strong>Work History</strong></h1>
+      <p class="hero-desc">
+        3+ years across distributed infrastructure, cloud automation, and platform engineering —
+        from early-stage startups to large-scale ISP environments.
+      </p>
+    </section>
+
+    <section>
+      <div class="section-label">Roles</div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-company">Smartlead — Sydney, Australia (Remote)</div>
+          <div class="exp-period">Feb 2024 – Jul 2025</div>
+        </div>
+        <div class="exp-role">DevOps Engineer</div>
+        <ul class="exp-points">
+          <li>Engineered AWS infrastructure supporting 10M+ daily email deliveries; scaled to 300% volume growth with 99.99% uptime using multi-region load balancing and containerisation.</li>
+          <li>Reduced infrastructure costs by 15% (~$500K USD) in FY2024 through AWS Savings Plans optimisation, auto-scaling policy tuning, and third-party server resource allocation.</li>
+          <li>Led SOC2 Type 2 compliance as sole architect — redesigned 20+ IAM policies, implemented company-wide VPN, migrated Node.js credentials to AWS Secrets Manager, reducing audit vulnerabilities by 35%.</li>
+          <li>Migrated AWS RDS to Aurora PostgreSQL; implemented Boto3-driven load-based auto-scaling, partitioning, and indexing. Archived 18 months of data to EC2 Citus clusters — cut DB costs by 20%, boosted query performance by 30%.</li>
+          <li>Deployed and customised DeepSeek model on EC2; improved email deliverability by 25% for 5M+ daily sends via keyword-focused inference tuning.</li>
+          <li>Managed 1,500+ third-party servers for Smartservers feature; automated provisioning via Cloud-Init with Docker, NewRelic logging, and firewall configuration for consistent, secure deployments.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="tag">AWS EC2/EKS/RDS/Aurora</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Python / Boto3</span>
+          <span class="tag">Docker</span>
+          <span class="tag">SOC2</span>
+          <span class="tag">IAM</span>
+          <span class="tag">NewRelic</span>
+          <span class="tag">PagerDuty</span>
+          <span class="tag">DeepSeek</span>
+          <span class="tag">Cloud-Init</span>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-company">AuditCue — Chennai, India</div>
+          <div class="exp-period">Oct 2023 – Jan 2024</div>
+        </div>
+        <div class="exp-role">DevOps Engineer</div>
+        <ul class="exp-points">
+          <li>Provisioned full Development and Production AWS environments from scratch with Terraform, ensuring SOC2 and ISO 27001 compliance from day one.</li>
+          <li>Built SQLite backup service using Litestream for continuous S3 replication — achieved 99.9% data recovery rate with near-real-time backups.</li>
+          <li>Constructed deployment servers per STIG security policies; applied kernel-level sandboxing using systemd slices and chroot environments for Go service isolation.</li>
+          <li>Automated build and deployment pipelines across multiple customer environments using Ansible and Fossil version control.</li>
+          <li>Configured multi-VPC architecture with VPC peering and cross-region API connectivity for secure, segmented service communication.</li>
+          <li>Deployed and managed Tailscale VPN for secure internal service access; aggregated systemd slice logs via Rsync to S3 and enabled ELK Stack observability.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="tag">Terraform</span>
+          <span class="tag">Ansible</span>
+          <span class="tag">systemd</span>
+          <span class="tag">Litestream</span>
+          <span class="tag">SQLite</span>
+          <span class="tag">VPC</span>
+          <span class="tag">Tailscale VPN</span>
+          <span class="tag">ELK Stack</span>
+          <span class="tag">SOC2 / ISO 27001</span>
+          <span class="tag">STIG</span>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-company">Comcast — Chennai, India</div>
+          <div class="exp-period">Dec 2021 – Oct 2023</div>
+        </div>
+        <div class="exp-role">DevOps Engineer</div>
+        <ul class="exp-points">
+          <li>Part of 3-engineer team that migrated 25+ applications from OpenStack to AWS, reducing latency by 15% for 1.5M+ users.</li>
+          <li>Contributed to 8-member team migrating 30+ microservices from Kops to AWS EKS with Istio and Karpenter autoscaling — cut deployment time from 12 to 5 hours per sprint.</li>
+          <li>Enhanced Jenkins CI/CD pipelines with SaltStack integration; reduced build failures by 90% over 20+ sprints.</li>
+          <li>Led migration of critical EC2 application from x86 to ARM architecture — cut compute costs by 25% and improved performance by 15%.</li>
+          <li>Automated 100+ monitoring alerts with Icinga, reducing incident response time by 50%; retired PagerDuty to lower operational costs.</li>
+          <li>Maintained Kafka, Spark, and WiFi mesh orchestration infrastructure serving 1.5M+ Mesh WiFi users at 99.95% uptime.</li>
+          <li>Built Grafana dashboards and alerting that identified and resolved a 5-month API proxy bottleneck — reduced latency by 40% at peak traffic.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="tag">AWS EKS</span>
+          <span class="tag">Kubernetes</span>
+          <span class="tag">Istio</span>
+          <span class="tag">Jenkins</span>
+          <span class="tag">SaltStack</span>
+          <span class="tag">Grafana</span>
+          <span class="tag">Icinga</span>
+          <span class="tag">Kafka</span>
+          <span class="tag">Spark</span>
+          <span class="tag">ARM migration</span>
+        </div>
+      </div>
+
+      <div class="exp-item" style="border-bottom:none;">
+        <div class="exp-header">
+          <div class="exp-company">Ayoconnect — Pune, India</div>
+          <div class="exp-period">Aug 2021 – Dec 2021</div>
+        </div>
+        <div class="exp-role">Software Engineer</div>
+        <ul class="exp-points">
+          <li>Provisioned scalable production environment on GCP for a new product launch; designed Apigee API Gateway for secure service management.</li>
+          <li>Managed Kubernetes microservice deployments each sprint using Ansible and Rancher for container orchestration.</li>
+          <li>Built Python-based server notification system and custom integration connecting GCP with Workplace to improve team automation.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="tag">GCP</span>
+          <span class="tag">Kubernetes</span>
+          <span class="tag">Apigee</span>
+          <span class="tag">Ansible</span>
+          <span class="tag">Python</span>
+          <span class="tag">Rancher</span>
+        </div>
+      </div>
+
+    </section>
+
+    <section style="border-bottom:none; padding-bottom:0;">
+      <div class="section-label">Education</div>
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-company">Technische Universität Ilmenau — Germany</div>
+          <div class="exp-period">Oct 2022 – Oct 2025</div>
+        </div>
+        <div class="exp-role">MSc Communications and Signals Processing</div>
+        <ul class="exp-points">
+          <li>Focus areas: Blind Source Separation, ICA, Statistical Signal Processing, 6G network concepts, IIoT.</li>
+          <li>Built ML-based BSS model for mixed speech signal isolation as part of coursework.</li>
+        </ul>
+      </div>
+      <div class="exp-item" style="border-bottom:none;">
+        <div class="exp-header">
+          <div class="exp-company">SRM Easwari Engineering College — Chennai, India</div>
+          <div class="exp-period">Aug 2017 – Jul 2021</div>
+        </div>
+        <div class="exp-role">BE Electronics and Communications Engineering</div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-name">Venkatesan Govindarajan · Ilmenau, Germany</span>
+    <div class="footer-links">
+      <a href="work.html">Work</a>
+      <a href="projects.html">Projects</a>
+      <a href="blog.html">Blog</a>
+      <a href="cv.html">CV</a>
+      <a href="mailto:venkatesangovindarajan03@gmail.com">Email</a>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Easter egg overlay -->
+<div id="konami-overlay">
+  <pre>
+██╗   ██╗███████╗ ██████╗ 
+██║   ██║╚════██║██╔════╝ 
+██║   ██║    ██╔╝██║  ███╗
+╚██╗ ██╔╝   ██╔╝ ██║   ██║
+ ╚████╔╝   ██║   ╚██████╔╝
+  ╚═══╝    ╚═╝    ╚═════╝ 
+  </pre>
+  <p>you found the easter egg<br><br>
+  this is basically me at 2am doing random things that<br>
+  <em>i definitely was planning five minutes ago</em><br><br>
+  current status: MSc student by day, gremlin by night<br>
+  german skill level: kann Tee bestellen ✓</p>
+  <button id="konami-close">[ esc ] close</button>
+</div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
