@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}}</title>
+<meta name="description" content="{{description}}">
+<link rel="canonical" href="{{siteUrl}}/">
+<meta name="author" content="{{name}}">
+<meta name="theme-color" content="#F8F0CB">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:url" content="{{siteUrl}}/">
+<meta property="og:image" content="{{siteUrl}}/og.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/css/paper.css">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script type="application/ld+json">{{jsonld}}</script>
+</head>
+<body>
+<div class="wrap">
+<div class="bar"><button class="tb" id="pause" type="button">Pause motion</button><button class="tb" id="theme" type="button">Light / dark</button></div>
+
+<header>
+  <h1>{{name}}</h1>
+  <p class="role">{{role}}</p>
+  <div class="status"><i></i><span>Open to work · {{openTo}}</span></div>
+  <p class="loc">{{location}} · {{relocation}}</p>
+  <p class="summary">{{summary}}</p>
+  <div class="links">
+    <a class="btn primary" href="{{linkedin}}" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn" href="{{github}}" target="_blank" rel="noopener">GitHub</a>
+    <a class="btn" href="#contact">Contact</a>
+  </div>
+</header>
+
+{{fig:hero}}
+
+<main>
+<section id="education">
+  <h2>Education</h2>
+  {{fig:edu}}
+  {{education}}
+  <p class="small note">{{moreCoursesNote}} <a href="{{linkedin}}" target="_blank" rel="noopener">LinkedIn profile</a>.</p>
+</section>
+
+<section id="experience">
+  <h2>Experience</h2>
+  {{fig:exp}}
+  {{experience}}
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  {{fig:uav}}
+  {{projects}}
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  {{fig:skills}}
+  {{skills}}
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  {{fig:contact}}
+  <div class="contactbox">
+    <a class="btn primary" href="{{linkedin}}" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn" href="mailto:{{email}}">Email</a>
+    <span class="sel" id="mail">{{email}}</span>
+    <button class="btn" id="copy" type="button">Copy</button><span class="facts" id="copied" aria-live="polite" style="margin:0"></span>
+  </div>
+  <p class="small">Based in {{location}}. {{relocationCap}}.<br>Languages: {{languages}}.</p>
+  <h3 style="margin-top:18px">References</h3>
+  {{referenceList}}
+  <p class="small note">Hover or tap a number to read the recommendation. All are public on LinkedIn.</p>
+</section>
+</main>
+<footer>{{footer}}</footer>
+</div>
+<script src="assets/js/sprites.js"></script>
+<script src="assets/js/scenes.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

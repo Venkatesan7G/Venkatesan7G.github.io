@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://venkatesan7g.github.io/sitemap.xml

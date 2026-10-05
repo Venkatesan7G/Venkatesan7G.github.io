@@ -1,0 +1,14 @@
+{
+  "_help": "Each group is one row in the Skills list. 'learning' is the 'Currently learning' line, items are joined with ' · '.",
+  "groups": [
+    {"name": "Cloud", "items": "AWS (EC2, EKS, ECS, RDS, Aurora, S3, SQS, Lambda, IAM, VPC), Google Cloud"},
+    {"name": "Automation", "items": "Terraform, Ansible, SaltStack, Bash, Python, Boto3, Cloud-Init"},
+    {"name": "Containers", "items": "Docker, Kubernetes (EKS, Kops, Rancher), Istio, Karpenter"},
+    {"name": "CI/CD", "items": "Jenkins, Bitbucket Pipelines, Git"},
+    {"name": "Monitoring", "items": "Prometheus, Grafana, Datadog, NewRelic, PagerDuty, Icinga, ELK"},
+    {"name": "Data", "items": "PostgreSQL, Aurora, Citus, Kafka (operations), Spark, OpenSearch, SQL"},
+    {"name": "Security", "items": "SOC 2 Type II controls, ISO 27001 alignment, IAM design, VPNs, STIG hardening"},
+    {"name": "Machine learning", "items": "PyTorch, scikit-learn, XGBoost, TensorFlow, graph neural networks, MATLAB"}
+  ],
+  "learning": ["bare-metal infrastructure management", "hands-on project building", "OpenSAP", "German toward working-professional level", "machine learning"]
+}

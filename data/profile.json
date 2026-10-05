@@ -1,0 +1,19 @@
+{
+  "_help": "Top-of-page facts. Change text here, then run: node build.mjs. 'openTo' are plain job titles shown in the green status pill and in the page description. Keep 'summary' to 2 or 3 sentences, plain words.",
+  "name": "Venkatesan Govindarajan",
+  "siteUrl": "https://venkatesan7g.github.io",
+  "role": "DevOps / SRE engineer · M.Sc. student, Communications & Signal Processing",
+  "jobTitle": "DevOps / Site Reliability Engineer",
+  "openTo": ["MLOps", "DevOps", "SRE", "Cloud", "Research Assistant"],
+  "location": "Ilmenau, Germany",
+  "relocation": "open to relocation across Germany (on-site, hybrid or remote)",
+  "summary": "I have nearly four years of experience running cloud infrastructure in production at Smartlead, Comcast, AuditCue and Ayoconnect. I now study communications and signal processing at TU Ilmenau, with a focus on machine learning. I am looking for a part-time Werkstudent role alongside my studies.",
+  "linkedin": "https://www.linkedin.com/in/venkatesan-govindarajan",
+  "github": "https://github.com/Venkatesan7G",
+  "email": "venkatesangovindarajan03@gmail.com",
+  "languages": "English (C1) · German (A2, learning) · Tamil (native)",
+  "moreCoursesNote": "Further courses, certifications and skills are listed on my",
+  "knowsAbout": ["DevOps", "Site Reliability Engineering", "AWS", "Kubernetes", "Terraform", "Ansible", "Machine Learning", "Signal Processing"],
+  "alumniOf": ["Technische Universität Ilmenau", "SRM Easwari Engineering College"],
+  "footer": "© 2026 Venkatesan Govindarajan"
+}

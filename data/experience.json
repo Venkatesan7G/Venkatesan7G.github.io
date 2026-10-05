@@ -1,0 +1,52 @@
+{
+  "_help": "Newest first. 'bullets' = the 3 to 5 points always visible. 'more' = extra points behind 'Read more' (delete the key or use [] if none). 'refs' = reference ids from references.json shown as [n] under the role. Percentages stay in projects.json, not here, when a point also appears as a project. Verbs: 'operated' is not 'engineered', 'tested' is not 'implemented'. Keep only what you can defend in an interview.",
+  "refsLabel": {"many": "What colleagues wrote:", "one": "A teammate wrote:"},
+  "items": [
+    {"org": "Smartlead", "when": "Feb 2024 to Jul 2025", "title": "DevOps Engineer · Remote", "refs": [1, 2, 3, 4],
+     "bullets": [
+       "Operated and scaled AWS infrastructure for 10M+ daily email deliveries through 6x volume growth at 99% uptime.",
+       "Sole architect of the SOC 2 Type II technical controls: rewrote 20+ IAM policies, rolled out a company VPN, moved credentials into Secrets Manager.",
+       "Led the infrastructure side of a database re-architecture, from tested archival on Citus to an Aurora reader/writer split.",
+       "Managed 1,500+ third-party servers for the Smartservers feature and set up the team's on-call process with PagerDuty and NewRelic.",
+       "Took customer support tickets every week, was the customers' contact in a shared Slack channel, and linked the Growth and product teams."],
+     "more": [
+       "Built and ran an event-driven pipeline (RDS, SQS, Lambda, ECS) behind the core email-sending workflow, with multi-region connectivity through VPC peering.",
+       "Set up disaster-recovery deployments with Terraform and Bitbucket-based infrastructure delivery.",
+       "Added container image scanning to the deploy path and worked with external consultants to turn SOC 2 requirements into automated fixes.",
+       "Provisioned third-party servers with Cloud-Init scripts that installed Docker, NewRelic logging and firewall rules.",
+       "Deployed and customized an open-weight DeepSeek model on EC2 to study its effect on email deliverability.",
+       "Joined customer meetings and acted as the link between the Growth team and product managers for services I owned, such as Smartservers."]},
+    {"org": "AuditCue", "when": "Oct 2023 to Jan 2024", "title": "DevOps Engineer", "refs": [],
+     "bullets": [
+       "Built development and production AWS environments from scratch with Terraform, aligned with SOC 2 and ISO 27001.",
+       "Hardened deployment servers to STIG policies and sandboxed Go services with systemd slices and chroot.",
+       "Automated build and deploy pipelines for several customer environments with Ansible, Python/Boto3 and shell scripts."],
+     "more": [
+       "Rolled out Tailscale VPN for service access and onboarded the first user groups.",
+       "Ran EC2 instances across several secure VPCs, with VPC peering and cross-region API connectivity.",
+       "Collected logs from the systemd slices with rsync into S3 and used ELK for observability.",
+       "Used Fossil for version control across the build and deploy setup."]},
+    {"org": "Comcast", "when": "Dec 2021 to Oct 2023", "title": "Site Reliability Engineer · Chennai", "refs": [5],
+     "bullets": [
+       "Migrated 25+ applications from OpenStack to AWS in a team of three, cutting latency 15% for downstream teams.",
+       "Helped move 30+ microservices from Kops clusters to EKS with Istio and Karpenter, taking deployment time from 12 to 5 hours per sprint.",
+       "Led the move of a critical EC2 application from x86 to ARM, and found a five-month API proxy bottleneck with new dashboards and alerts.",
+       "Kept CI/CD running across teams with Jenkins, Ansible and SaltStack.",
+       "Awards: Spotlight Award (June 2022) and High Five CHAMP Award (June 2023)."],
+     "more": [
+       "Provisioned and operated Kafka, OpenSearch and Spark for the migrated applications (operations and provisioning; developers owned the application design).",
+       "Ran Kafka, Spark and Cassandra for a Wi-Fi platform serving 1.5M+ users at 99.95% uptime.",
+       "Built the staging environment on AWS with EKS and ECR, monitored with Prometheus, ELK and Grafana.",
+       "Automated 100+ Icinga alerts, which cut incident response time by half.",
+       "Deployed new microservices and patches to pre-production and production, including backend Go services across EC2 and Kubernetes in several regions."]},
+    {"org": "Ayoconnect", "when": "Aug 2021 to Dec 2021", "title": "Software / DevOps Engineer · Pune", "refs": [],
+     "bullets": [
+       "Built a production environment on Google Cloud and an Apigee API gateway for a new project.",
+       "Ran CI/CD with Bitbucket Pipelines, Docker and Ansible, and updated Kubernetes microservices every sprint.",
+       "Wrote Python tooling for server notifications, including an integration from GCP to Workplace."],
+     "more": [
+       "Managed Kubernetes microservice updates with Ansible and Rancher.",
+       "Updated and documented an OpenVPN server running on AWS.",
+       "Set up cloud, Kubernetes, Git, Confluence, Jira and database accounts for new joiners."]}
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "_help": "Only add people whose LinkedIn recommendation is PUBLIC and who are fine being quoted. 'id' is the number shown as [n] and must be unique, 1..N in the order you want them listed. 'quote' must be their exact words (copy, do not tidy). Link a reference to a job by putting its id in that job's 'refs' list in experience.json.",
+  "items": [
+    {"id": 1, "name": "Vaibhav Namburi", "role": "Founder, Smartlead", "date": "July 2025",
+     "quote": "We hired Venkatesan to “help” with our DevOps. Little did I know he was going to be instrumental for the success of our business and effectively built the entire AWS fort our business runs on. He was always there when we needed help, constantly looking to learn or provide assistance."},
+    {"id": 2, "name": "Sukhvir Kaur", "role": "Engineering Lead, Smartlead", "date": "July 2025",
+     "quote": "Venkatesan was one of those teammates you could always count on. No matter how big or small the challenge, he was always ready with a yes, let’s solve it attitude. His deep DevOps knowledge, combined with his calm and dependable nature, made a huge difference to our team."},
+    {"id": 3, "name": "Romal Patel", "role": "Engineering, Smartlead", "date": "July 2025",
+     "quote": "I can confidently say he is one of the most skilled and dedicated professionals I’ve worked with. As a DevOps engineer, Venkatesan has consistently demonstrated exceptional technical expertise and a keen problem-solving ability, ensuring our infrastructure runs smoothly and efficiently."},
+    {"id": 4, "name": "Samith K S", "role": "Full Stack Engineer, Smartlead", "date": "July 2025",
+     "quote": "One quality I really appreciate in Venkatesan is his eagerness to learn. Whenever we complete a task or solve a problem, he always asks me to show him how it was done so he can do it himself next time. He is always looking to improve and automate processes."},
+    {"id": 5, "name": "Suriya Prakash M", "role": "DevOps and Development Engineer, Workday", "date": "October 2023", "listNote": "same team at Comcast",
+     "quote": "Having worked with Venkat for 1.5 years, I must say he is an excellent professional. He helped me understand the infra setup in cloud and helpful in creating cloud resources through automation. We worked together with some salt automation tasks and terraform. I am impressed by his work ethic and communication skills."}
+  ]
+}

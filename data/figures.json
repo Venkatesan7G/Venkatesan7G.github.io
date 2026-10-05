@@ -1,0 +1,9 @@
+{
+  "_help": "One entry per animated scene. 'scene' must match a function in assets/js/scenes.js (SCENES.<name>). Fig. numbers are automatic, in page order. Where each figure sits on the page is set in src/template.html with {{fig:<key>}}. 'alt' is read by screen readers and search engines, so describe what happens in one sentence.",
+  "hero": {"scene": "hero", "alt": "A boy throws a ball and his yellow Labrador fetches it", "caption": "The Labrador returns whatever the author throws."},
+  "edu": {"scene": "edu", "alt": "A boy at a board where a mixed signal splits into two sources, with his dog asleep beside him", "caption": "A mixed signal on the left, two separated sources on the right."},
+  "exp": {"scene": "exp", "alt": "A boy walks along server racks with his dog while a load meter climbs from 1x to 6x", "caption": "Walking the racks while load grows from 1x to 6x (schematic)."},
+  "uav": {"scene": "uav", "alt": "A drone flies over a field and polls three sensor nodes while a boy and his dog watch", "caption": "A UAV visiting sensor nodes in a field (in progress)."},
+  "skills": {"scene": "skills", "alt": "A boy types at a laptop while a commit moves along a conveyor through build, test and deploy, and a cluster of pods scales out", "caption": "A change moves through build, test and deploy while the cluster scales out (schematic)."},
+  "contact": {"scene": "contact", "alt": "A phone rings, the dog barks, and the boy runs over to answer", "caption": "The phone rings, the dog barks, the author answers."}
+}

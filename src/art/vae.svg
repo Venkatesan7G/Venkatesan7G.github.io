@@ -1,0 +1,5 @@
+<path class="st" d="M14 14 L62 30 V48 L14 64 Z" style="fill:var(--board)"/><path class="st" d="M146 14 L98 30 V48 L146 64 Z" style="fill:var(--board)"/>
+<circle class="nd n" cx="80" cy="39" r="7"/>
+<path class="st" d="M62 39 H73 M87 39 H98" style="stroke-dasharray:2 3"/>
+<text x="20" y="43">x</text><text x="130" y="43">x̂</text>
+<circle class="dot d5" r="3"/>

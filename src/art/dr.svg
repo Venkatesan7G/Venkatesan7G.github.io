@@ -1,0 +1,3 @@
+<rect class="rg ra" x="10" y="22" width="44" height="34"/><text x="22" y="43">A</text>
+<rect class="rg rb" x="106" y="22" width="44" height="34"/><text x="122" y="43">B</text>
+<path class="st" d="M54 39 H106" style="stroke-dasharray:2 3"/><circle class="dot d4" r="3"/>

@@ -1,0 +1,4 @@
+<path d="M10 62 H150" class="st" style="stroke:var(--rule)"/>
+<rect class="sn a" x="34" y="50" width="8" height="8"/><rect class="sn b" x="76" y="50" width="8" height="8"/><rect class="sn c" x="118" y="50" width="8" height="8"/>
+<path class="st" d="M38 58 V62 M80 58 V62 M122 58 V62"/>
+<g class="uav"><rect x="-8" y="-2" width="16" height="5" style="fill:var(--ink)"/><path d="M-12 -4 H-3 M3 -4 H12" class="st"/></g>

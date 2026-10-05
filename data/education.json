@@ -1,0 +1,8 @@
+{
+  "_help": "Newest first. Each item: school, when, degree. Add or delete a {...} block; keep the commas right.",
+  "items": [
+    {"school": "Technische Universität Ilmenau", "when": "Oct 2025 to present", "degree": "M.Sc. Communications and Signal Processing"},
+    {"school": "SRM Easwari Engineering College, Chennai", "when": "2017 to 2021", "degree": "B.E. Electronics and Communications Engineering"},
+    {"school": "Great Learning", "when": "Dec 2021 to Jun 2022", "degree": "Stanford Advanced Cyber Security Program (grade: Excellent)"}
+  ]
+}
